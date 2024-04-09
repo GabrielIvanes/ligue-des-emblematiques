@@ -1,0 +1,38 @@
+.home-content {
+	margin-top: 50px;
+}
+
+.home-content .top-content {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 20px;
+}
+
+.home-content .top-content > div {
+	width: 400px;
+}
+
+.home-content .biography {
+	flex: 0.5;
+}
+
+.home-content .information {
+	display: flex;
+	align-items: center;
+}
+
+.home-content .biography img {
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+	float: left;
+	margin-right: 5px;
+}
+
+.home-content .biography .text {
+	text-align: justify;
+}
+
+.home-content hr {
+	border-color: var(--yellow);
+}
