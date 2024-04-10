@@ -1,15 +1,16 @@
-import portrait from '../../public/portrait.jpg';
-import lore1 from '../../public/lore/1.png';
-import lore2 from '../../public/lore/2.png';
-import lore3 from '../../public/lore/3.png';
-import lore4 from '../../public/lore/4.png';
-import lore5 from '../../public/lore/5.png';
-import lore6 from '../../public/lore/6.png';
-import lore7 from '../../public/lore/7.png';
-import lore8 from '../../public/lore/8.png';
-import lore9 from '../../public/lore/9.png';
-import lore10 from '../../public/lore/10.png';
-import attention from '../../public/attention.png';
+import portrait from '../assets/images/portrait.jpg';
+import lore1 from '../assets/images/lore/1.png';
+import lore2 from '../assets/images/lore/2.png';
+import lore3 from '../assets/images/lore/3.png';
+import lore4 from '../assets/images/lore/4.png';
+import lore5 from '../assets/images/lore/5.png';
+import lore6 from '../assets/images/lore/6.png';
+import lore7 from '../assets/images/lore/7.png';
+import lore8 from '../assets/images/lore/8.png';
+import lore9 from '../assets/images/lore/9.png';
+import lore10 from '../assets/images/lore/10.png';
+import attention from '../assets/images/attention.png';
+import send from '../assets/images/send.png';
 
 function Home() {
 	const currentDate = new Date();
@@ -63,17 +64,17 @@ function Home() {
 				</div>
 			</div>
 			<hr />
-			<div className='commentaires-wrapper'>
+			<div className='comments-wrapper'>
 				<h2>Espace commentaire</h2>
-				<div className='commentaires'>
-					<div className='commentaire-wrapper'>
+				<div className='comments'>
+					<div className='comment-wrapper'>
 						<div className='titre'>
 							<div>
 								Stan sur <a href='/'>fin de la ligue des emblématiques</a>
 							</div>
 							<div>{formattedDateTime}</div>
 						</div>
-						<div className='commentaire'>
+						<div className='comment'>
 							Absolument abject ! La fin de "La Ligue des Emblématiques" est un
 							affront à l'intelligence même des lecteurs. Après des années
 							d'investissement émotionnel dans ces personnages, l'auteur décide
@@ -84,6 +85,13 @@ function Home() {
 							ont investi leur temps et leur affection dans cet univers. Que cet
 							auteur ose appeler cela un épilogue digne de ce nom est une HONTE.
 						</div>
+					</div>
+					<div className='new-comment'>
+						<input
+							type='text'
+							placeholder='Ecrivez un nouveau commentaire ...'
+						/>
+						<img src={send} alt='send' />
 					</div>
 				</div>
 			</div>

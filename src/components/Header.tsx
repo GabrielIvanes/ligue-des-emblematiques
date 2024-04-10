@@ -17,10 +17,11 @@ function Header() {
 			<nav>
 				<ul>
 					{locations.map((loc, index) => (
-						<li className={location.pathname === loc.url ? 'active' : ''}>
-							<Link key={index} to={loc.url}>
-								{loc.name}
-							</Link>
+						<li
+							key={index}
+							className={location.pathname === loc.url ? 'active' : ''}
+						>
+							<Link to={loc.url}>{loc.name}</Link>
 						</li>
 					))}
 				</ul>
