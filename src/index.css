@@ -2,13 +2,16 @@
 
 @import './assets/styles/home.css';
 @import './assets/styles/header.css';
+@import './assets/styles/tchat.css';
 
 :root {
 	--primary-font: 'Bangers';
 
 	--blue: #1e90ff;
+	--light-blue: #87ceeb;
 	--yellow: #ffff00;
 	--red: #960018;
+	--light-red: #c70028;
 	--black: #232323;
 }
 

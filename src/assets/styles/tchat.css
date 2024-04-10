@@ -1,0 +1,67 @@
+.tchat-wrapper {
+	height: 84.2vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.tchat {
+	height: 85%;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.tchat .message-wrapper {
+	margin: 10px;
+	width: calc(100% - 20px);
+}
+
+.tchat .message-wrapper .titre {
+	border: 2px solid black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 50px;
+}
+
+.tchat .message-wrapper .message {
+	padding: 20px;
+	border: 2px solid black;
+	font-size: 17px;
+}
+
+.tchat .message-wrapper.SuperDestroyer78 .titre {
+	background-color: var(--red);
+}
+
+.tchat .message-wrapper.SuperDestroyer78 .message {
+	background-color: var(--light-red);
+}
+
+.tchat .message-wrapper.Stan .titre {
+	background-color: var(--blue);
+}
+
+.tchat .message-wrapper.Stan .message {
+	background-color: var(--light-blue);
+}
+
+.new-tchat {
+	height: 15%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.new-tchat input {
+	width: 90%;
+	padding: 10px;
+	margin-right: 10px;
+}
+
+.new-tchat img {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
