@@ -1,13 +1,28 @@
+import { Link, useLocation } from 'react-router-dom';
+
 function Header() {
+	const location = useLocation();
+
+	const locations = [
+		{ url: '/', name: 'Accueil' },
+		{ url: '/tchat', name: 'Tchat' },
+		{ url: '/comics', name: 'Comics' },
+		{ url: '/livres', name: 'Livres' },
+		{ url: '/auteur', name: 'Auteur' },
+	];
+
 	return (
 		<header>
 			<h1>La ligue des emblématiques</h1>
 			<nav>
 				<ul>
-					<li>Accueil</li>
-					<li>Tchat</li>
-					<li>Comics</li>
-					<li>Livres</li>
+					{locations.map((loc, index) => (
+						<li className={location.pathname === loc.url ? 'active' : ''}>
+							<Link key={index} to={loc.url}>
+								{loc.name}
+							</Link>
+						</li>
+					))}
 				</ul>
 			</nav>
 		</header>

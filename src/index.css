@@ -8,6 +8,8 @@
 
 	--blue: #1e90ff;
 	--yellow: #ffff00;
+	--red: #960018;
+	--black: #232323;
 }
 
 * {
@@ -18,7 +20,7 @@
 }
 
 .main-wrapper {
-	background-color: #232323;
+	background-color: var(--black);
 	min-height: 100vh;
 	width: 100%;
 }
@@ -27,10 +29,4 @@
 	background-color: white;
 	min-height: 100vh;
 	margin: 0 280px;
-	padding-top: 15px;
-	background-color: var(--blue);
-}
-
-h1 {
-	color: var(--yellow);
 }

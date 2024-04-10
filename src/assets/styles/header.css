@@ -1,3 +1,8 @@
+header {
+	padding-top: 15px;
+	background-color: var(--blue);
+}
+
 header h1 {
 	width: 100%;
 	text-align: center;
@@ -7,8 +12,6 @@ header h1 {
 header nav {
 	margin-top: 15px;
 	width: 100%;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
 }
 
 header nav ul {
@@ -19,7 +22,19 @@ header nav ul {
 
 header nav ul li {
 	font-size: 20px;
-	border-left: 1px solid black;
-	border-right: 1px solid black;
 	padding: 5px 10px;
+}
+
+header nav ul li a {
+	text-decoration: none;
+	color: inherit;
+}
+
+header nav ul li.active,
+header nav ul li a:hover {
+	color: var(--yellow);
+}
+
+header h1 {
+	color: var(--yellow);
 }
