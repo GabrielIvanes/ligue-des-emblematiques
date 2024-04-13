@@ -1,11 +1,13 @@
 .home-content {
 	padding-top: 15px;
 	background-color: var(--yellow);
+	height: 81.5vh;
 }
 
 .home-content .top-content {
 	display: flex;
 	justify-content: space-around;
+	height: 25vh;
 }
 
 .home-content .top-content > div {
@@ -70,6 +72,7 @@
 }
 
 .home-content .lore-wrapper {
+	height: 10.5vh;
 	margin: 10px 20px 0 20px;
 }
 
@@ -93,7 +96,7 @@
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
-	height: 271px;
+	height: calc(81.5vh - 25vh - 10.5vh - 48px);
 	overflow: hidden;
 }
 
