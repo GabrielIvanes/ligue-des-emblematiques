@@ -54,7 +54,7 @@ function Home() {
 						Dernières news
 					</div>
 					<div className='information-content'>
-						Séance de dédicace avec Gérard Milot dans 2 jours !
+						Séance de dédicace avec Gérard Millot dans 2 jours !
 					</div>
 				</div>
 			</div>

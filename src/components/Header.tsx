@@ -13,7 +13,7 @@ function Header() {
 
 	return (
 		<header>
-			<h1>La ligue des emblématiques</h1>
+			<h1>Blog La ligue des emblématiques</h1>
 			<nav>
 				<ul>
 					{locations.map((loc, index) => (

@@ -1,8 +1,9 @@
 .tchat-wrapper {
-	height: 84.2vh;
+	height: 82.1vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	background-color: var(--yellow);
 }
 
 .tchat {
