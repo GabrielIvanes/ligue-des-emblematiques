@@ -1,5 +1,5 @@
 .tchat-wrapper {
-	height: 81.5vh;
+	height: calc(100vh - 130px);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

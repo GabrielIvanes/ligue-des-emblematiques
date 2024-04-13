@@ -1,6 +1,6 @@
 .home-content {
 	background-color: var(--yellow);
-	height: 81.5vh;
+	height: calc(100vh - 130px);
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
@@ -10,11 +10,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+	gap: 10px;
 	flex: 1 0 auto;
+	border: 1px solid red;
 }
 
 .home-content .top-content > div {
-	width: 400px;
 	height: 170px;
 }
 
@@ -22,7 +23,7 @@
 	border: thick double var(--blue);
 	padding: 5px;
 	padding-right: 10px;
-	flex: 0.81;
+	width: 500px;
 }
 
 .home-content .information {
@@ -30,6 +31,7 @@
 	flex-direction: column;
 	align-items: center;
 	background-color: var(--red);
+	width: 400px;
 }
 
 .home-content .information .titre {
