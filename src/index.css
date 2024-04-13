@@ -33,3 +33,17 @@
 	min-height: 100vh;
 	margin: 0 280px;
 }
+
+.pub1,
+.pub2 {
+	position: absolute;
+	height: 90vh;
+	top: 35px;
+}
+
+.pub1 {
+	right: 55px;
+}
+.pub2 {
+	left: 55px;
+}
