@@ -22,7 +22,7 @@ function Tchat() {
 		'Comment ça?',
 	];
 
-	const [messages, setMessages] = useState<Message[]>([
+	const messages = [
 		{
 			text: messagesSuperDestroyer[0],
 			author: 'SuperDestroyer78',
@@ -58,7 +58,7 @@ function Tchat() {
 			author: 'SuperDestroyer78',
 			date: getTime(),
 		},
-	]);
+	];
 	const [messageIsSending, setMessageIsSending] = useState<boolean>(false);
 
 	const [inputValue, setInputValue] = useState<string>('');
