@@ -70,7 +70,7 @@ function Tchat() {
 	const [messageIndex, setMessageIndex] = useState(1);
 
 	const tchatRef = useRef<HTMLDivElement>(null);
-	const inputRef = useRef(null);
+	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	useEffect(() => {
 		if (inputRef.current) {
@@ -81,7 +81,8 @@ function Tchat() {
 	useEffect(() => {
 		function writeText() {
 			let index = 0;
-			const input = document.querySelector('.new-tchat input');
+			const input =
+				document.querySelector<HTMLInputElement>('.new-tchat input');
 
 			const interval = setInterval(() => {
 				if (
