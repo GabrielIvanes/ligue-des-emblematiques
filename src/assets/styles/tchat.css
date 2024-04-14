@@ -15,6 +15,7 @@
 	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
+	overflow-x: hidden;
 }
 
 .tchat .message-wrapper {
@@ -71,13 +72,28 @@
 	cursor: pointer;
 }
 
-.slide-in {
-	animation: slideIn 1s ease forwards;
+.message-wrapper.new-message.Stan {
+	animation: slideFromRight 0.5s forwards;
 }
 
-@keyframes slideIn {
+.message-wrapper.new-message.message-wrapper.SuperDestroyer78 {
+	animation: slideFromLeft 0.5s forwards;
+}
+
+@keyframes slideFromLeft {
 	from {
 		transform: translateX(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideFromRight {
+	from {
+		transform: translateX(100%);
 		opacity: 0;
 	}
 	to {

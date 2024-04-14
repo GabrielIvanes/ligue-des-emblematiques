@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Tchat from './pages/Tchat';
+// import Tchat from './pages/Tchat';
+import Tchat2 from './pages/Tchat2';
 import Header from './components/Header';
 import pub1 from './assets/images/pub1.png';
 
@@ -15,7 +16,7 @@ function App() {
 					<Header />
 					<Routes>
 						<Route path='/' element={<Home />} />
-						<Route path='/tchat' element={<Tchat />} />
+						<Route path='/tchat' element={<Tchat2 />} />
 						<Route path='*' element={<Home />} />
 					</Routes>
 				</div>

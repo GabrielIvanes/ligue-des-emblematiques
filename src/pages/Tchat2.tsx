@@ -28,10 +28,42 @@ function Tchat() {
 			author: 'SuperDestroyer78',
 			date: getTime(),
 		},
+		{
+			text: messagesStan[0],
+			author: 'Stan',
+			date: getTime(),
+		},
+		{
+			text: messagesSuperDestroyer[1],
+			author: 'SuperDestroyer78',
+			date: getTime(),
+		},
+		{
+			text: messagesStan[1],
+			author: 'Stan',
+			date: getTime(),
+		},
+		{
+			text: messagesSuperDestroyer[2],
+			author: 'SuperDestroyer78',
+			date: getTime(),
+		},
+		{
+			text: messagesStan[2],
+			author: 'Stan',
+			date: getTime(),
+		},
+		{
+			text: messagesSuperDestroyer[3],
+			author: 'SuperDestroyer78',
+			date: getTime(),
+		},
 	]);
 	const [messageIsSending, setMessageIsSending] = useState<boolean>(false);
 
 	const [inputValue, setInputValue] = useState<string>('');
+
+	const [messageIndex, setMessageIndex] = useState(1);
 
 	const tchatRef = useRef<HTMLDivElement>(null);
 
@@ -52,19 +84,40 @@ function Tchat() {
 		return formattedDateTime;
 	}
 
+	function addDivMessage(message: Message) {
+		const tchat = document.querySelector('.tchat');
+		const divMessageWrapper = document.createElement('div');
+		const divTitre = document.createElement('div');
+		const divPersonMessage = document.createElement('div');
+		const divDate = document.createElement('div');
+		const divMessage = document.createElement('div');
+
+		divMessageWrapper.classList.add(
+			'message-wrapper',
+			message.author,
+			'new-message'
+		);
+
+		divTitre.classList.add('titre');
+		divPersonMessage.classList.add('person-message');
+		divDate.classList.add('date');
+		divMessage.classList.add('message');
+
+		divPersonMessage.textContent = message.author;
+		divDate.textContent = message.date;
+		divMessage.textContent = message.text;
+
+		divTitre.appendChild(divPersonMessage);
+		divTitre.appendChild(divDate);
+		divMessageWrapper.appendChild(divTitre);
+		divMessageWrapper.appendChild(divMessage);
+		tchat?.insertBefore(divMessageWrapper, tchat.firstChild);
+	}
+
 	function sendStanMessage() {
-		const index = Math.floor(messages.length / 2);
-		const messagesTmp = [...messages];
-
-		messagesTmp.push({
-			text: messagesStan[index],
-			author: 'Stan',
-			date: getTime(),
-		});
-
-		if (messagesStan[index] && !messageIsSending) {
-			setMessages(messagesTmp);
-			sendSuperDestroyerMessage(index, [...messagesTmp]);
+		if (messages[messageIndex] && !messageIsSending) {
+			addDivMessage(messages[messageIndex]);
+			sendSuperDestroyerMessage(messageIndex + 1);
 		}
 	}
 
@@ -75,24 +128,18 @@ function Tchat() {
 		}
 	}
 
-	function sendSuperDestroyerMessage(index: number, messagesTmp: Message[]) {
+	function sendSuperDestroyerMessage(index: number) {
 		setMessageIsSending(true);
 		const nombreMots =
-			messagesSuperDestroyer[index + 1].split(/\s+/).length > 30
-				? messagesSuperDestroyer[index + 1].split(/\s+/).length / 2
-				: messagesSuperDestroyer[index + 1].split(/\s+/).length;
+			messages[index].text.split(/\s+/).length > 30
+				? messages[index].text.split(/\s+/).length / 2
+				: messages[index].text.split(/\s+/).length;
 
 		const dureeEnMinutes = nombreMots / 40;
 
-		const newMessagesTmp = [...messagesTmp];
-
-		newMessagesTmp.push({
-			text: messagesSuperDestroyer[index + 1],
-			author: 'SuperDestroyer78',
-			date: getTime(),
-		});
 		setTimeout(() => {
-			setMessages(newMessagesTmp);
+			addDivMessage(messages[index]);
+			setMessageIndex(index + 1);
 			setMessageIsSending(false);
 		}, dureeEnMinutes * 20000);
 	}
@@ -107,23 +154,13 @@ function Tchat() {
 		messages && (
 			<div className='tchat-wrapper'>
 				<div className='tchat' ref={tchatRef}>
-					{messages
-						.slice()
-						.reverse()
-						.map((message, index) => (
-							<div
-								key={index}
-								className={`message-wrapper ${message.author} ${
-									index === 0 ? 'new-message' : ''
-								}`}
-							>
-								<div className='titre'>
-									<div className='person-message'>{message.author}</div>
-									<div className='date'>{message.date}</div>
-								</div>
-								<div className='message'>{message.text}</div>
-							</div>
-						))}
+					<div className={`message-wrapper ${messages[0].author} new-message`}>
+						<div className='titre'>
+							<div className='person-message'>{messages[0].author}</div>
+							<div className='date'>{messages[0].date}</div>
+						</div>
+						<div className='message'>{messages[0].text}</div>
+					</div>
 				</div>
 				<div className='new-tchat'>
 					<input
