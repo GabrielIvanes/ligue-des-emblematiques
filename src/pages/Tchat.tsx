@@ -94,10 +94,6 @@ function Tchat() {
 		setTimeout(() => {
 			setMessages(newMessagesTmp);
 			setMessageIsSending(false);
-			// const lastMessage = document.querySelector('.tchat div:first-child');
-			// setTimeout(() => {
-			// 	lastMessage && lastMessage.classList.add('slide-in');
-			// }, 10);
 		}, dureeEnMinutes * 20000);
 	}
 

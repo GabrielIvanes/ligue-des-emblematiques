@@ -20,14 +20,14 @@
 }
 
 .home-content .top-content > div {
-	height: 170px;
 }
 
 .home-content .biography {
 	border: thick double var(--blue);
 	padding: 5px;
 	padding-right: 10px;
-	width: 55%;
+	width: fit-content;
+	max-width: 60%;
 	font-size: 14px;
 }
 
@@ -37,6 +37,7 @@
 	align-items: center;
 	background-color: var(--red);
 	width: 45%;
+	height: 170px;
 }
 
 .home-content .information .titre {
