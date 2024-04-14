@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 
 import send from '../assets/images/send.png';
 
@@ -17,48 +17,52 @@ function Tchat() {
 	];
 
 	const messagesStan = [
-		' Non. Ce n’est certainement plus d’actualité.',
+		'Non. Ce n’est certainement plus d’actualité.',
 		'Pourquoi ?',
 		'Comment ça?',
 	];
 
-	const messages = [
-		{
-			text: messagesSuperDestroyer[0],
-			author: 'SuperDestroyer78',
-			date: getTime(),
-		},
-		{
-			text: messagesStan[0],
-			author: 'Stan',
-			date: getTime(),
-		},
-		{
-			text: messagesSuperDestroyer[1],
-			author: 'SuperDestroyer78',
-			date: getTime(),
-		},
-		{
-			text: messagesStan[1],
-			author: 'Stan',
-			date: getTime(),
-		},
-		{
-			text: messagesSuperDestroyer[2],
-			author: 'SuperDestroyer78',
-			date: getTime(),
-		},
-		{
-			text: messagesStan[2],
-			author: 'Stan',
-			date: getTime(),
-		},
-		{
-			text: messagesSuperDestroyer[3],
-			author: 'SuperDestroyer78',
-			date: getTime(),
-		},
-	];
+	const messages = useMemo(
+		() => [
+			{
+				text: messagesSuperDestroyer[0],
+				author: 'SuperDestroyer78',
+				date: getTime(),
+			},
+			{
+				text: messagesStan[0],
+				author: 'Stan',
+				date: getTime(),
+			},
+			{
+				text: messagesSuperDestroyer[1],
+				author: 'SuperDestroyer78',
+				date: getTime(),
+			},
+			{
+				text: messagesStan[1],
+				author: 'Stan',
+				date: getTime(),
+			},
+			{
+				text: messagesSuperDestroyer[2],
+				author: 'SuperDestroyer78',
+				date: getTime(),
+			},
+			{
+				text: messagesStan[2],
+				author: 'Stan',
+				date: getTime(),
+			},
+			{
+				text: messagesSuperDestroyer[3],
+				author: 'SuperDestroyer78',
+				date: getTime(),
+			},
+		],
+		[messagesSuperDestroyer, messagesStan]
+	);
+
 	const [messageIsSending, setMessageIsSending] = useState<boolean>(false);
 
 	const [inputValue, setInputValue] = useState<string>('');
@@ -66,6 +70,46 @@ function Tchat() {
 	const [messageIndex, setMessageIndex] = useState(1);
 
 	const tchatRef = useRef<HTMLDivElement>(null);
+	const inputRef = useRef(null);
+
+	useEffect(() => {
+		if (inputRef.current) {
+			inputRef.current.focus();
+		}
+	}, []);
+
+	useEffect(() => {
+		function writeText() {
+			let index = 0;
+			const input = document.querySelector('.new-tchat input');
+
+			const interval = setInterval(() => {
+				if (
+					messages[messageIndex].text &&
+					index < messages[messageIndex].text.length &&
+					input &&
+					messages[messageIndex].author !== 'SuperDestroyer78'
+				) {
+					input.value += messages[messageIndex].text[index];
+					index += 1;
+				} else {
+					clearInterval(interval);
+					waitAndPerformActions();
+				}
+			}, 100);
+
+			const waitAndPerformActions = () => {
+				setTimeout(() => {
+					setInputValue('');
+					sendStanMessage();
+				}, 500);
+			};
+		}
+
+		const timeoutId = setTimeout(writeText, messageIndex === 1 ? 6000 : 3000);
+
+		return () => clearTimeout(timeoutId);
+	}, [messageIndex]);
 
 	useEffect(() => {
 		scrollToTop();
@@ -117,6 +161,7 @@ function Tchat() {
 	function sendStanMessage() {
 		if (messages[messageIndex] && !messageIsSending) {
 			addDivMessage(messages[messageIndex]);
+			setMessageIndex(messageIndex + 1);
 			sendSuperDestroyerMessage(messageIndex + 1);
 		}
 	}
@@ -164,6 +209,7 @@ function Tchat() {
 				</div>
 				<div className='new-tchat'>
 					<input
+						ref={inputRef}
 						type='text'
 						placeholder='Envoyez un nouveau message ...'
 						onKeyDown={(event) => onEnterPressed(event)}
