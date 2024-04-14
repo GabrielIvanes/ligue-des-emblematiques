@@ -6,6 +6,10 @@
 	flex-direction: column;
 }
 
+.home-content * {
+	font-family: var(--secondary-font);
+}
+
 .home-content .top-content {
 	display: flex;
 	align-items: center;
@@ -24,6 +28,7 @@
 	padding: 5px;
 	padding-right: 10px;
 	width: 55%;
+	font-size: 14px;
 }
 
 .home-content .information {
@@ -57,7 +62,7 @@
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	font-size: 30px;
+	font-size: 23px;
 	color: white;
 	text-align: center;
 }
@@ -84,7 +89,7 @@
 
 .home-content .lore-wrapper h2 {
 	margin-bottom: 5px;
-	font-size: 25px;
+	font-size: 18px;
 }
 
 .home-content .lore {
@@ -106,6 +111,7 @@
 }
 
 .home-content .comments-wrapper h2 {
+	font-size: 18px;
 	width: 100%;
 	text-align: left;
 	padding: 10px 20px;
@@ -124,12 +130,13 @@
 	border-bottom: 2px solid black;
 	padding: 5px 10px;
 	margin-bottom: 5px;
+	font-size: 14px;
 }
 
 .home-content .comments .comment-wrapper .comment {
 	padding: 5px 10px;
 	border-bottom: 2px solid black;
-	font-size: 20px;
+	font-size: 14px;
 }
 
 .home-content .comments .new-comment {

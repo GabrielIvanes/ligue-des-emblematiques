@@ -6,6 +6,10 @@
 	background-color: var(--yellow);
 }
 
+.tchat-wrapper * {
+	font-family: var(--secondary-font);
+}
+
 .tchat {
 	height: 85%;
 	overflow-y: auto;
@@ -65,4 +69,19 @@
 	width: 30px;
 	height: 30px;
 	cursor: pointer;
+}
+
+.slide-in {
+	animation: slideIn 1s ease forwards;
+}
+
+@keyframes slideIn {
+	from {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
 }

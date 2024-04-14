@@ -29,6 +29,7 @@ function Tchat() {
 			date: getTime(),
 		},
 	]);
+	const [messageIsSending, setMessageIsSending] = useState<boolean>(false);
 
 	const [inputValue, setInputValue] = useState<string>('');
 
@@ -61,8 +62,10 @@ function Tchat() {
 			date: getTime(),
 		});
 
-		setMessages(messagesTmp);
-		sendSuperDestroyerMessage(index, [...messagesTmp]);
+		if (messagesStan[index] && !messageIsSending) {
+			setMessages(messagesTmp);
+			sendSuperDestroyerMessage(index, [...messagesTmp]);
+		}
 	}
 
 	function onEnterPressed(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -73,6 +76,7 @@ function Tchat() {
 	}
 
 	function sendSuperDestroyerMessage(index: number, messagesTmp: Message[]) {
+		setMessageIsSending(true);
 		const nombreMots =
 			messagesSuperDestroyer[index + 1].split(/\s+/).length > 30
 				? messagesSuperDestroyer[index + 1].split(/\s+/).length / 2
@@ -87,9 +91,13 @@ function Tchat() {
 			author: 'SuperDestroyer78',
 			date: getTime(),
 		});
-
 		setTimeout(() => {
 			setMessages(newMessagesTmp);
+			setMessageIsSending(false);
+			// const lastMessage = document.querySelector('.tchat div:first-child');
+			// setTimeout(() => {
+			// 	lastMessage && lastMessage.classList.add('slide-in');
+			// }, 10);
 		}, dureeEnMinutes * 20000);
 	}
 
@@ -99,6 +107,8 @@ function Tchat() {
 		}
 	}
 
+	console.log(messages.slice().reverse());
+
 	return (
 		<div className='tchat-wrapper'>
 			<div className='tchat' ref={tchatRef}>
@@ -106,7 +116,12 @@ function Tchat() {
 					.slice()
 					.reverse()
 					.map((message, index) => (
-						<div key={index} className={`message-wrapper ${message.author}`}>
+						<div
+							key={index}
+							className={`message-wrapper ${message.author} ${
+								index === 0 ? 'slide-in' : ''
+							}`}
+						>
 							<div className='titre'>
 								<div className='person-message'>{message.author}</div>
 								<div className='date'>{message.date}</div>

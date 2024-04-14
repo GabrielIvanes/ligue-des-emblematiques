@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
 @import './assets/styles/home.css';
 @import './assets/styles/header.css';
@@ -6,6 +7,7 @@
 
 :root {
 	--primary-font: 'Bangers';
+	--secondary-font: 'Russo One';
 
 	--blue: #1e90ff;
 	--light-blue: #87ceeb;
