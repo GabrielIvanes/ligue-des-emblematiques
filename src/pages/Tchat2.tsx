@@ -10,7 +10,7 @@ interface Message {
 
 function Tchat() {
 	const messagesSuperDestroyer = [
-		'Je viens vers toi suite à ton commentaire. C’est juste. Très juste. Nous honoreras-tu de ta présence lors de la séance de dédicace ?',
+		'Naleko, je viens vers toi suite à ton commentaire. C’est juste. Très juste. Nous honoreras-tu de ta présence lors de la séance de dédicace ?',
 		'Erreur. Très grosse erreur.',
 		'Tu possèdes le potentiel.',
 		'Je voulais te faire une proposition.',
@@ -18,7 +18,7 @@ function Tchat() {
 	];
 
 	const messagesStan = [
-		'Non. Ce n’est certainement plus d’actualité.',
+		'Okelan, Non. Ce n’est certainement plus d’actualité.',
 		'Pourquoi ?',
 		'Comment ça?',
 	];
@@ -211,7 +211,17 @@ function Tchat() {
 							<div className='person-message'>{messages[0].author}</div>
 							<div className='date'>{messages[0].date}</div>
 						</div>
-						<div className='message'>{messages[0].text}</div>
+						<div className='message'>
+							<div className='response'>
+								<div>Réponse au commentaire de Stan du 27/04/2024</div>
+								<div>
+									{'>>'} Absolument abject ! La fin de "La Ligue des
+									Emblématiques" est un affront à l'intelligence ...
+								</div>
+							</div>
+
+							<div>{messages[0].text}</div>
+						</div>
 					</div>
 				</div>
 				<div className='new-tchat'>

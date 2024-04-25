@@ -26,9 +26,6 @@
 	height: calc(100vh - 295px);
 }
 
-.author-wrapper .informations > div {
-}
-
 .author-wrapper .informations > div > div {
 	height: fit-content;
 	margin: 20px;

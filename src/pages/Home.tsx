@@ -15,14 +15,14 @@ import send from '../assets/images/send.png';
 import { useState, FormEvent } from 'react';
 
 function Home() {
-	const currentDate = new Date();
-	const day = String(currentDate.getDate()).padStart(2, '0');
-	const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-	const year = currentDate.getFullYear();
-	const hours = String(currentDate.getHours()).padStart(2, '0');
-	const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+	// const currentDate = new Date();
+	// const day = String(currentDate.getDate()).padStart(2, '0');
+	// const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+	// const year = currentDate.getFullYear();
+	// const hours = String(currentDate.getHours()).padStart(2, '0');
+	// const minutes = String(currentDate.getMinutes()).padStart(2, '0');
 
-	const formattedDateTime = `${day}/${month}/${year} 	${hours}:${minutes}`;
+	// const formattedDateTime = `${day}/${month}/${year} 	${hours}:${minutes}`;
 
 	const [textAreaValue, setTextAreaValue] = useState<string>('');
 	const [heightTextArea, setHeightTextArea] = useState<number>(0);
@@ -85,7 +85,7 @@ function Home() {
 							<div>
 								Stan sur <a href='/'>fin de la ligue des emblématiques</a>
 							</div>
-							<div>{formattedDateTime}</div>
+							<div>27/04/2024 02:34</div>
 						</div>
 						<div className='comment'>
 							Absolument abject ! La fin de "La Ligue des Emblématiques" est un

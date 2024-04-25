@@ -32,9 +32,19 @@
 }
 
 .tchat .message-wrapper .message {
-	padding: 20px;
+	padding: 10px;
 	border: 2px solid black;
 	font-size: 17px;
+}
+
+.tchat .message-wrapper .message .response {
+	font-size: 13px;
+	margin-bottom: 5px;
+	border: 2px solid var(--black);
+	width: fit-content;
+	padding: 5px 10px;
+	position: relative;
+	border-left-width: 10px;
 }
 
 .tchat .message-wrapper.SuperDestroyer78 .titre {
