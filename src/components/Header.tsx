@@ -35,7 +35,7 @@ function Header() {
 
 	return (
 		<header>
-			<h1>Fansite La ligue des emblématiques</h1>
+			{/* <h1>Fansite La ligue des emblématiques</h1> */}
 			<nav>
 				<div className='left'>
 					<ul>
