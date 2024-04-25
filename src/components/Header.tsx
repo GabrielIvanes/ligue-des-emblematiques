@@ -10,6 +10,8 @@ import twitter from '../assets/images/twitter.png';
 import search from '../assets/images/search.png';
 import notification from '../assets/audio/notification.mp3';
 
+import titre from '../assets/images/titre6.png';
+
 function Header() {
 	const location = useLocation();
 	const [showNotification, setShowNotification] = useState<boolean>(false);
@@ -35,7 +37,7 @@ function Header() {
 
 	return (
 		<header>
-			{/* <h1>Fansite La ligue des emblématiques</h1> */}
+			<img src={titre} alt='titre' className='titre' />
 			<nav>
 				<div className='left'>
 					<ul>
