@@ -38,6 +38,7 @@ function Header() {
 	return (
 		<header>
 			<img src={titre} alt='titre' className='titre' />
+			<h1>Fansite</h1>
 			<nav>
 				<div className='left'>
 					<ul>
