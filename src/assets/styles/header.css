@@ -2,6 +2,7 @@ header {
 	padding-top: 25px;
 	background-color: var(--blue);
 	height: 130px;
+	border-bottom: 5px solid var(--black);
 }
 
 header h1 {
@@ -13,12 +14,24 @@ header h1 {
 header nav {
 	margin-top: 15px;
 	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+}
+
+header nav .left {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
 }
 
 header nav ul {
 	display: flex;
 	justify-content: space-around;
 	list-style-type: none;
+	gap: 10px;
 }
 
 header nav ul li {
@@ -38,4 +51,53 @@ header nav ul li a:hover {
 
 header h1 {
 	color: var(--yellow);
+}
+
+header .notification-wrapper {
+	position: relative;
+}
+
+header .notification-wrapper span {
+	z-index: 2;
+}
+
+header .notification {
+	z-index: 0;
+	background-color: red;
+	border-radius: 50%;
+	height: 20px;
+	width: 20px;
+	font-size: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+	position: absolute;
+	top: -10px;
+	right: -19px;
+}
+
+header .logo img {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+header input {
+	padding: 2px 10px;
+	width: 200px;
+}
+
+header .search {
+	position: relative;
+}
+
+header .search img {
+	position: absolute;
+	top: 3px;
+	right: 10px;
+	width: 15px;
+	height: 15px;
+	cursor: pointer;
 }

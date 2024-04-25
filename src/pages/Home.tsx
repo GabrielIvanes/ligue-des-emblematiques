@@ -11,13 +11,10 @@ import lore9 from '../assets/images/lore/9.png';
 import lore10 from '../assets/images/lore/10.png';
 import attention from '../assets/images/attention.png';
 import send from '../assets/images/send.png';
-import info from '../assets/images/info.png';
-import remove from '../assets/images/remove.png';
-import { useState } from 'react';
+
+import { useState, FormEvent } from 'react';
 
 function Home() {
-	const [showNotification, setShowNotification] = useState<boolean>(false);
-
 	const currentDate = new Date();
 	const day = String(currentDate.getDate()).padStart(2, '0');
 	const month = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -27,11 +24,16 @@ function Home() {
 
 	const formattedDateTime = `${day}/${month}/${year} 	${hours}:${minutes}`;
 
-	function handleKeyDown(event: KeyboardEvent) {
-		if (event.key === 'n') setShowNotification(true);
-	}
+	const [textAreaValue, setTextAreaValue] = useState<string>('');
+	const [heightTextArea, setHeightTextArea] = useState<number>(0);
 
-	document.addEventListener('keydown', handleKeyDown);
+	function adjustHeight(event: FormEvent<HTMLTextAreaElement>) {
+		const contentHeight = Math.max(
+			event.currentTarget.scrollHeight,
+			event.currentTarget.clientHeight
+		);
+		setHeightTextArea(contentHeight);
+	}
 
 	return (
 		<div className='home-content'>
@@ -98,26 +100,19 @@ function Home() {
 						</div>
 					</div>
 					<div className='new-comment'>
-						<input
-							type='text'
+						<textarea
+							style={{ height: `${heightTextArea}px` }}
 							placeholder='Ecrivez un nouveau commentaire ...'
+							value={textAreaValue}
+							onChange={(event) => {
+								adjustHeight(event);
+								setTextAreaValue(event.target.value);
+							}}
 						/>
 						<img src={send} alt='send' />
 					</div>
 				</div>
 			</div>
-			{showNotification && (
-				<div className='notification'>
-					<img
-						className='remove'
-						src={remove}
-						alt='remove'
-						onClick={() => setShowNotification(false)}
-					/>
-					<img src={info} alt='info' />
-					<div>Vous avez reçu un nouveau message privé de SuperDestroyer78</div>
-				</div>
-			)}
 		</div>
 	);
 }

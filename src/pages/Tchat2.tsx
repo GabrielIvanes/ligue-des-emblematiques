@@ -10,10 +10,11 @@ interface Message {
 
 function Tchat() {
 	const messagesSuperDestroyer = [
-		'Je viens vers toi suite à ton commentaire. C’est juste. Très juste. Nous honoreras-tu de ta présence lors de la séance de dédicaces ?',
+		'Je viens vers toi suite à ton commentaire. C’est juste. Très juste. Nous honoreras-tu de ta présence lors de la séance de dédicace ?',
 		'Erreur. Très grosse erreur.',
 		'Tu possèdes le potentiel.',
-		'Je voulais te faire une proposition. Je cherche des gens pour m’accompagner. Je vais proposer à l’auteur de réécrire sa fin. Si tu veux te joindre à moi... rendez-vous au Bar Barella à 11h30.',
+		'Je voulais te faire une proposition.',
+		'Je cherche des gens pour m’accompagner. Je vais proposer à l’auteur de réécrire sa fin. Si tu veux te joindre à moi... rendez-vous au Bar Barella à 11h30.',
 	];
 
 	const messagesStan = [
@@ -56,6 +57,11 @@ function Tchat() {
 			},
 			{
 				text: messagesSuperDestroyer[3],
+				author: 'SuperDestroyer78',
+				date: getTime(),
+			},
+			{
+				text: messagesSuperDestroyer[4],
 				author: 'SuperDestroyer78',
 				date: getTime(),
 			},
@@ -113,7 +119,7 @@ function Tchat() {
 	}, [messageIndex]);
 
 	useEffect(() => {
-		scrollToTop();
+		scrollToBottom();
 	}, [messages]);
 
 	function getTime() {
@@ -156,7 +162,7 @@ function Tchat() {
 		divTitre.appendChild(divDate);
 		divMessageWrapper.appendChild(divTitre);
 		divMessageWrapper.appendChild(divMessage);
-		tchat?.insertBefore(divMessageWrapper, tchat.firstChild);
+		tchat?.appendChild(divMessageWrapper);
 	}
 
 	function sendStanMessage() {
@@ -190,9 +196,9 @@ function Tchat() {
 		}, dureeEnMinutes * 20000);
 	}
 
-	function scrollToTop() {
+	function scrollToBottom() {
 		if (tchatRef.current) {
-			tchatRef.current.scrollTop = 0;
+			tchatRef.current.scrollTop = tchatRef.current.scrollHeight;
 		}
 	}
 

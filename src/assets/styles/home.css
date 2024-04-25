@@ -1,5 +1,4 @@
 .home-content {
-	background-color: var(--yellow);
 	height: calc(100vh - 130px);
 	display: flex;
 	justify-content: space-between;
@@ -144,10 +143,13 @@
 	padding: 5px 10px;
 }
 
-.home-content .comments .new-comment input {
+.home-content .comments .new-comment textarea {
 	padding: 5px 10px;
 	width: 90%;
 	margin-right: 10px;
+	min-height: 30px;
+	resize: none;
+	overflow: hidden;
 }
 
 .home-content .comments .new-comment img {
