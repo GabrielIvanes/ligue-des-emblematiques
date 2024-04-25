@@ -20,7 +20,7 @@ function Tchat() {
 	const messagesStan = [
 		'Okelan, Non. Ce n’est certainement plus d’actualité.',
 		'Pourquoi ?',
-		'Comment ça?',
+		'Comment ça ?',
 	];
 
 	const messages = useMemo(
