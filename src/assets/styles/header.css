@@ -26,6 +26,8 @@ header h1 {
 	font-size: 50px;
 	bottom: 35px;
 	right: 14px;
+	color: rgb(255, 228, 0) !important;
+	text-shadow: -5px 8px 5px black;
 }
 
 header nav {
