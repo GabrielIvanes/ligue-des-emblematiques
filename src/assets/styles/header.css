@@ -15,7 +15,7 @@ header img.titre {
 	position: absolute;
 	top: -40%;
 	height: 400px;
-	left: 12%;
+	left: 5%;
 }
 
 header h1 {
@@ -24,8 +24,8 @@ header h1 {
 	width: fit-content;
 	text-align: center;
 	font-size: 50px;
-	top: 0;
-	left: 35%;
+	bottom: 35px;
+	right: 14px;
 }
 
 header nav {
