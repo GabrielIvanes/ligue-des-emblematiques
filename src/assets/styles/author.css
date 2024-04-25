@@ -1,0 +1,76 @@
+.author-wrapper {
+	height: calc(100vh - 275px);
+	width: 100%;
+	color: black;
+	margin-top: 15px;
+	padding: 20px 10px 0 10px;
+	display: flex;
+}
+
+.author-wrapper h1 {
+	color: var(--blue);
+	text-shadow: -5px 8px 5px black;
+	width: 100%;
+	text-align: center;
+}
+
+.author-wrapper .portrait {
+	height: calc(100vh - 295px);
+	border: 10px solid black;
+}
+
+.author-wrapper .informations {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: calc(100vh - 295px);
+}
+
+.author-wrapper .informations > div {
+}
+
+.author-wrapper .informations > div > div {
+	height: fit-content;
+	margin: 20px;
+}
+
+.author-wrapper .informations .top {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.author-wrapper .informations .biography {
+	font-size: 20px;
+	text-align: justify;
+}
+
+.author-wrapper .informations .actuality {
+	font-family: var(--third-font);
+	font-size: 22px;
+	text-align: center;
+	width: 80%;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--red);
+	padding: 10px 10px;
+	border-radius: 8px;
+}
+
+.author-wrapper .informations .actuality img {
+	width: 40px;
+	height: 40px;
+}
+
+.author-wrapper .informations .social-media {
+	margin-bottom: 0;
+}
+
+.author-wrapper .informations .social-media div {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 18px;
+}

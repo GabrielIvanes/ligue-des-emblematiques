@@ -13,8 +13,8 @@ header {
 
 header img.titre {
 	position: absolute;
-	top: -40%;
-	height: 400px;
+	top: 7%;
+	height: 180px;
 	left: 5%;
 }
 
@@ -39,7 +39,8 @@ header nav {
 	padding: 10px 20px;
 	background-color: var(--blue);
 	position: relative;
-	top: 20px;
+	top: 30px;
+	border: 5px solid black;
 }
 
 header nav .left {

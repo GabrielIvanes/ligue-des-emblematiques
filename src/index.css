@@ -4,10 +4,17 @@
 @import './assets/styles/home.css';
 @import './assets/styles/header.css';
 @import './assets/styles/tchat.css';
+@import './assets/styles/author.css';
+
+@font-face {
+	font-family: 'Alphakind';
+	src: url('./assets/fonts/Alphakind.otf');
+}
 
 :root {
 	--primary-font: 'Bangers';
 	--secondary-font: 'Russo One';
+	--third-font: 'Alphakind';
 
 	--blue: #1e90ff;
 	--light-blue: #87ceeb;

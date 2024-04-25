@@ -10,7 +10,7 @@ import twitter from '../assets/images/twitter.png';
 import search from '../assets/images/search.png';
 import notification from '../assets/audio/notification.mp3';
 
-import titre from '../assets/images/titre6.png';
+import titre from '../assets/images/titre7.png';
 
 function Header() {
 	const location = useLocation();
