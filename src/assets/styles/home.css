@@ -1,9 +1,9 @@
 .home-content {
-	height: calc(100vh - 150px);
+	/* height: calc(100vh - 150px); */
 	display: flex;
-	justify-content: space-between;
 	flex-direction: column;
 	padding-top: 30px;
+	padding-bottom: 20px;
 }
 
 .home-content * {
@@ -17,6 +17,7 @@
 	gap: 10px;
 	flex: 1 0 auto;
 	margin: 0 10px;
+	padding: 10px 0;
 }
 
 .home-content .biography {
@@ -26,6 +27,7 @@
 	width: fit-content;
 	max-width: 60%;
 	font-size: 14px;
+	height: fit-content;
 }
 
 .home-content .information {

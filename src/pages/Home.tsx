@@ -12,7 +12,7 @@ import lore10 from '../assets/images/lore/10.png';
 import attention from '../assets/images/attention.png';
 import send from '../assets/images/send.png';
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useRef, useEffect } from 'react';
 
 function Home() {
 	// const currentDate = new Date();
@@ -24,19 +24,55 @@ function Home() {
 
 	// const formattedDateTime = `${day}/${month}/${year} 	${hours}:${minutes}`;
 
+	const longCommentaire =
+		'Gérard Millot est un auteur de bande dessinée français né à Paris. Son œuvre, "La Ligue des Emblématiques", est sortie en 2004. Cettesérie captivante mêle habilement action, mystère et personnagescomplexes. Grâce à son talent exceptionnel et à son imaginationdébordante de son auteur. "La Ligue des Emblématiques" sauracaptiver les lecteurs avec ses histoires palpitantes et sespersonnages inoubliables.Gérard Millot est un auteur de bande dessinée français né à Paris.Son œuvre, "La Ligue des Emblématiques", est sortie en 2004. Cettesérie captivante mêle habilement action, mystère et personnagescomplexes. Grâce à son talent exceptionnel et à son imaginationdébordante de son auteur. "La Ligue des Emblématiques" sauracaptiver les lecteurs avec ses histoires palpitantes et sespersonnages inoubliables.Gérard Millot est un auteur de bande dessinée français né à Paris.Son œuvre, "La Ligue des Emblématiques", est sortie en 2004. Cettesérie captivante mêle habilement action, mystère et personnagescomplexes. Grâce à son talent exceptionnel et à son imaginationdébordante de son auteur. "La Ligue des Emblématiques" sauracaptiver les lecteurs avec ses histoires palpitantes et sespersonnages inoubliables.Gérard Millot est un auteur de bande dessinée français né à Paris.Son œuvre, "La Ligue des Emblématiques", est sortie en 2004. Cettesérie captivante mêle habilement action, mystère et personnagescomplexes. Grâce à son talent exceptionnel et à son imaginationdébordante de son auteur. "La Ligue des Emblématiques" sauracaptiver les lecteurs avec ses histoires palpitantes et sespersonnages inoubliables.';
+
+	const pageRef = useRef<HTMLDivElement>(null);
+
 	const [textAreaValue, setTextAreaValue] = useState<string>('');
 	const [heightTextArea, setHeightTextArea] = useState<number>(0);
 
-	function adjustHeight(event: FormEvent<HTMLTextAreaElement>) {
-		const contentHeight = Math.max(
-			event.currentTarget.scrollHeight,
-			event.currentTarget.clientHeight
-		);
-		setHeightTextArea(contentHeight);
+	useEffect(() => {
+		scrollToBottom();
+	}, [textAreaValue]);
+
+	function scrollToBottom() {
+		if (pageRef.current) {
+			pageRef.current.scrollTop = pageRef.current.scrollHeight;
+		}
 	}
 
+	function adjustHeight(event: FormEvent<HTMLTextAreaElement> | null) {
+		if (event) {
+			const contentHeight = Math.max(
+				event.currentTarget.scrollHeight,
+				event.currentTarget.clientHeight
+			);
+			if (textAreaValue === '') setHeightTextArea(30);
+			else setHeightTextArea(contentHeight);
+		}
+	}
+
+	function writeText() {
+		let index = 0;
+		const textarea = document.querySelector<HTMLInputElement>('textarea');
+
+		const interval = setInterval(() => {
+			if (longCommentaire && index < longCommentaire.length && textarea) {
+				textarea.value += longCommentaire[index];
+				index += 1;
+			} else {
+				clearInterval(interval);
+			}
+		}, 100);
+	}
+
+	useEffect(() => {
+		if (textAreaValue === '') setHeightTextArea(30);
+	}, [textAreaValue]);
+
 	return (
-		<div className='home-content'>
+		<div className='home-content' ref={pageRef}>
 			<div className='top-content'>
 				<div className='biography'>
 					<img src={portrait} alt='portrait' />
