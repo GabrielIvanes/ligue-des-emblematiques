@@ -68,7 +68,11 @@
 .author-wrapper .informations .biography {
 	width: 100%;
 	border: 3px solid black;
-	padding: 5px;
+	padding: 20px;
+	padding-right: 5px;
+	background-color: var(--yellow-title);
+	border-width: 3px 4px 3px 5px;
+	border-radius: 95% 4% 92% 5%/4% 95% 6% 95%;
 }
 
 .author-wrapper .informations .biography h2 {
@@ -82,12 +86,16 @@
 	font-size: 70px;
 	text-align: center;
 	width: fit-content;
-	color: var(--red);
+	color: var(--yellow-title);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: calc(75vh - 250px) !important;
-	border: 5px solid var(--red);
+	border: 5px solid black;
+	border-width: 5px 3px 3px 5px;
+	border-radius: 95% 4% 97% 5%/4% 94% 3% 95%;
+	transform: rotate(2deg);
+	background-color: var(--red);
 }
 
 .author-wrapper .informations .actuality img {
