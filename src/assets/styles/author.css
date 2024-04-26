@@ -9,9 +9,10 @@
 
 .author-wrapper h1 {
 	color: var(--blue);
-	text-shadow: -5px 8px 5px black;
+	text-shadow: -5px 3px 8px black;
 	width: 100%;
 	text-align: center;
+	font-size: 35px;
 }
 
 .author-wrapper .portrait {
@@ -45,7 +46,7 @@
 
 .author-wrapper .informations .actuality {
 	font-family: var(--third-font);
-	font-size: 22px;
+	font-size: 30px;
 	text-align: center;
 	width: fit-content;
 	color: white;
