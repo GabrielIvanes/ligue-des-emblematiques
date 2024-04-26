@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import portrait from '../assets/images/portrait.jpg';
 import lore1 from '../assets/images/lore/1.png';
 import lore2 from '../assets/images/lore/2.png';
@@ -12,7 +13,7 @@ import lore10 from '../assets/images/lore/10.png';
 import attention from '../assets/images/attention.png';
 import send from '../assets/images/send.png';
 
-import { useState, FormEvent, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function Home() {
 	// const currentDate = new Date();
@@ -28,48 +29,65 @@ function Home() {
 		'Gérard Millot est un auteur de bande dessinée français né à Paris. Son œuvre, "La Ligue des Emblématiques", est sortie en 2004. Cettesérie captivante mêle habilement action, mystère et personnagescomplexes. Grâce à son talent exceptionnel et à son imaginationdébordante de son auteur. "La Ligue des Emblématiques" sauracaptiver les lecteurs avec ses histoires palpitantes et sespersonnages inoubliables.Gérard Millot est un auteur de bande dessinée français né à Paris.Son œuvre, "La Ligue des Emblématiques", est sortie en 2004. Cettesérie captivante mêle habilement action, mystère et personnagescomplexes. Grâce à son talent exceptionnel et à son imaginationdébordante de son auteur. "La Ligue des Emblématiques" sauracaptiver les lecteurs avec ses histoires palpitantes et sespersonnages inoubliables.Gérard Millot est un auteur de bande dessinée français né à Paris.Son œuvre, "La Ligue des Emblématiques", est sortie en 2004. Cettesérie captivante mêle habilement action, mystère et personnagescomplexes. Grâce à son talent exceptionnel et à son imaginationdébordante de son auteur. "La Ligue des Emblématiques" sauracaptiver les lecteurs avec ses histoires palpitantes et sespersonnages inoubliables.Gérard Millot est un auteur de bande dessinée français né à Paris.Son œuvre, "La Ligue des Emblématiques", est sortie en 2004. Cettesérie captivante mêle habilement action, mystère et personnagescomplexes. Grâce à son talent exceptionnel et à son imaginationdébordante de son auteur. "La Ligue des Emblématiques" sauracaptiver les lecteurs avec ses histoires palpitantes et sespersonnages inoubliables.';
 
 	const pageRef = useRef<HTMLDivElement>(null);
+	const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
 	const [textAreaValue, setTextAreaValue] = useState<string>('');
 	const [heightTextArea, setHeightTextArea] = useState<number>(0);
-
-	useEffect(() => {
-		scrollToBottom();
-	}, [textAreaValue]);
+	const [intervalId, setIntervalId] = useState<number | undefined>(undefined);
 
 	function scrollToBottom() {
-		if (pageRef.current) {
-			pageRef.current.scrollTop = pageRef.current.scrollHeight;
-		}
+		if (textAreaValue !== '') window.scrollTo(0, document.body.scrollHeight);
 	}
 
-	function adjustHeight(event: FormEvent<HTMLTextAreaElement> | null) {
-		if (event) {
-			const contentHeight = Math.max(
-				event.currentTarget.scrollHeight,
-				event.currentTarget.clientHeight
-			);
-			if (textAreaValue === '') setHeightTextArea(30);
-			else setHeightTextArea(contentHeight);
-		}
+	function adjustHeight() {
+		const contentHeight = textAreaValue
+			? Math.max(
+					textAreaRef.current?.scrollHeight || 0,
+					textAreaRef.current?.clientHeight || 0
+			  )
+			: 30;
+		setHeightTextArea(contentHeight);
 	}
 
-	function writeText() {
-		let index = 0;
-		const textarea = document.querySelector<HTMLInputElement>('textarea');
-
-		const interval = setInterval(() => {
-			if (longCommentaire && index < longCommentaire.length && textarea) {
-				textarea.value += longCommentaire[index];
-				index += 1;
-			} else {
-				clearInterval(interval);
+	useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.key === 'c') {
+				event.preventDefault();
+				let i = 0;
+				const newIntervalId = setInterval(() => {
+					setTextAreaValue((prevValue) =>
+						prevValue
+							? prevValue + longCommentaire[i]
+							: longCommentaire[0] + longCommentaire[i]
+					);
+					i++;
+					if (i === longCommentaire.length) clearInterval(newIntervalId);
+				}, 100);
+				setIntervalId(newIntervalId);
+			} else if (event.key === 's') {
+				event.preventDefault();
+				clearInterval(intervalId);
 			}
-		}, 100);
-	}
+		};
+
+		document.addEventListener('keydown', handleKeyDown);
+
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
+		};
+	}, [intervalId]);
 
 	useEffect(() => {
 		if (textAreaValue === '') setHeightTextArea(30);
+		scrollToBottom();
+		adjustHeight();
 	}, [textAreaValue]);
+
+	useEffect(() => {
+		if (textAreaRef.current) {
+			textAreaRef.current.focus();
+		}
+	}, []);
 
 	return (
 		<div className='home-content' ref={pageRef}>
@@ -137,12 +155,17 @@ function Home() {
 					</div>
 					<div className='new-comment'>
 						<textarea
+							ref={textAreaRef}
 							style={{ height: `${heightTextArea}px` }}
 							placeholder='Ecrivez un nouveau commentaire ...'
 							value={textAreaValue}
 							onChange={(event) => {
-								adjustHeight(event);
-								setTextAreaValue(event.target.value);
+								if (
+									event.target.value != 'c' &&
+									event.target.value != 'n' &&
+									event.target.value != 's'
+								)
+									setTextAreaValue(event.target.value);
 							}}
 						/>
 						<img src={send} alt='send' />

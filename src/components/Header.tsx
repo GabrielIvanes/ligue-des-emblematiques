@@ -26,6 +26,7 @@ function Header() {
 
 	function handleKeyDown(event: KeyboardEvent) {
 		if (event.key === 'n') {
+			event.preventDefault();
 			setShowNotification(true);
 			const myAudio = document.createElement('audio');
 			myAudio.src = `${notification}`;
