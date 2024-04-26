@@ -1,11 +1,12 @@
 .author-wrapper {
-	/* height: calc(100vh - 270px); */
 	width: 100%;
 	color: black;
 	padding: 20px 10px 0 10px;
 	display: flex;
 	align-items: center;
-	border: 1px solid red;
+	background-image: url('../images/background-author.jpg');
+	background-size: cover;
+	background-position: top;
 }
 
 /* .author-wrapper * {
@@ -13,8 +14,8 @@
 } */
 
 .author-wrapper h1 {
-	color: var(--blue);
-	text-shadow: -5px 3px 8px black;
+	color: var(--yellow-title);
+	text-shadow: -5px 3px 8px var(--yellow-title);
 	width: 100%;
 	text-align: center;
 	font-size: 35px;
@@ -30,7 +31,7 @@
 }
 
 .author-wrapper .portrait {
-	border: 1px solid black;
+	border: 5px solid black;
 	border-radius: 50%;
 	width: 280px;
 	background-image: url('../images/portrait.jpg');
@@ -79,7 +80,7 @@
 	font-size: 70px;
 	text-align: center;
 	width: fit-content;
-	color: black;
+	color: var(--red);
 	display: flex;
 	justify-content: center;
 	align-items: center;

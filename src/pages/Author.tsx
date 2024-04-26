@@ -12,10 +12,7 @@ function Author() {
 
 			<div className='informations'>
 				<div className='top'>
-					<div className='actuality' style={{ marginBottom: '5px' }}>
-						{/* <img src={info} alt='' /> */}
-						Séance de dédicace dans 3 jours !
-					</div>
+					<div className='actuality'>Séance de dédicace dans 3 jours !</div>
 					<div className='biography'>
 						<h2>Biographie</h2>
 						<div>
