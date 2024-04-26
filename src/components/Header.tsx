@@ -38,7 +38,9 @@ function Header() {
 	return (
 		<header>
 			<img src={titre} alt='titre' className='titre' />
-			<h1>Fansite</h1>
+			<div className='header-top'>
+				<h1>Fansite</h1>
+			</div>
 			<nav>
 				<div className='left'>
 					<ul>

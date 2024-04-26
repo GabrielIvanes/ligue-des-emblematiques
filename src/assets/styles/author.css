@@ -1,11 +1,16 @@
 .author-wrapper {
-	height: calc(100vh - 275px);
+	/* height: calc(100vh - 270px); */
 	width: 100%;
 	color: black;
-	margin-top: 15px;
 	padding: 20px 10px 0 10px;
 	display: flex;
+	align-items: center;
+	border: 1px solid red;
 }
+
+/* .author-wrapper * {
+	border: 1px solid red;
+} */
 
 .author-wrapper h1 {
 	color: var(--blue);
@@ -15,16 +20,31 @@
 	font-size: 35px;
 }
 
+.author-wrapper .portrait-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: calc(100vh - 290px);
+	gap: 20px;
+}
+
 .author-wrapper .portrait {
-	height: calc(100vh - 295px);
-	border: 10px solid black;
+	border: 1px solid black;
+	border-radius: 50%;
+	width: 280px;
+	background-image: url('../images/portrait.jpg');
+	height: 280px;
+	background-size: cover;
+	background-position: 0 20%;
 }
 
 .author-wrapper .informations {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	height: calc(100vh - 295px);
+	/* justify-content: space-between; */
+	justify-content: center;
+	/* height: calc(100vh - 295px); */
 }
 
 .author-wrapper .informations > div > div {
@@ -39,23 +59,31 @@
 	justify-content: space-between;
 }
 
-.author-wrapper .informations .biography {
+/* .author-wrapper .informations .biography {
 	font-size: 20px;
 	text-align: justify;
+} */
+
+.author-wrapper .informations .biography {
+	width: 100%;
+}
+
+.author-wrapper .informations .biography h2 {
+	width: 100%;
+	text-align: left;
+	margin-bottom: 10px;
 }
 
 .author-wrapper .informations .actuality {
 	font-family: var(--third-font);
-	font-size: 30px;
+	font-size: 70px;
 	text-align: center;
 	width: fit-content;
-	color: white;
+	color: black;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--red);
-	padding: 10px 10px;
-	border-radius: 8px;
+	height: calc(75vh - 250px) !important;
 }
 
 .author-wrapper .informations .actuality img {
