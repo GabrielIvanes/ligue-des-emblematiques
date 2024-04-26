@@ -31,6 +31,22 @@
 	padding: 10px 50px;
 }
 
+.tchat .message-wrapper .titre .left {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 10px;
+}
+
+.tchat .message-wrapper .titre .left .face {
+	background-position: 53% 0;
+	background-size: cover;
+	width: 25px;
+	height: 25px;
+	border: 1px solid black;
+	border-radius: 50%;
+}
+
 .tchat .message-wrapper .message {
 	padding: 10px;
 	border: 2px solid black;
@@ -49,6 +65,14 @@
 
 .tchat .message-wrapper.SuperDestroyer78 .titre {
 	background-color: var(--red);
+}
+
+.tchat .message-wrapper.SuperDestroyer78 .titre .left .face {
+	background-image: url('../images/SD.jpg');
+}
+
+.tchat .message-wrapper.Stan .titre .left .face {
+	background-image: url('../images/Stan.jpg');
 }
 
 .tchat .message-wrapper.SuperDestroyer78 .message {

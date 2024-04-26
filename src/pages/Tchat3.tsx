@@ -132,6 +132,8 @@ function Tchat() {
 		const divPersonMessage = document.createElement('div');
 		const divDate = document.createElement('div');
 		const divMessage = document.createElement('div');
+		const divLeft = document.createElement('div');
+		const divFace = document.createElement('div');
 
 		divMessageWrapper.classList.add(
 			'message-wrapper',
@@ -143,12 +145,15 @@ function Tchat() {
 		divPersonMessage.classList.add('person-message');
 		divDate.classList.add('date');
 		divMessage.classList.add('message');
+		divLeft.classList.add('left');
+		divFace.classList.add('face');
 
 		divPersonMessage.textContent = message.author;
 		divDate.textContent = message.date;
 		divMessage.textContent = message.text;
-
-		divTitre.appendChild(divPersonMessage);
+		divLeft.appendChild(divFace);
+		divLeft.appendChild(divPersonMessage);
+		divTitre.appendChild(divLeft);
 		divTitre.appendChild(divDate);
 		divMessageWrapper.appendChild(divTitre);
 		divMessageWrapper.appendChild(divMessage);
@@ -175,7 +180,11 @@ function Tchat() {
 				<div className='tchat' ref={tchatRef}>
 					<div className={`message-wrapper ${messages[0].author} new-message`}>
 						<div className='titre'>
-							<div className='person-message'>{messages[0].author}</div>
+							<div className='left'>
+								<div className='face'></div>
+								<div className='person-message'>{messages[0].author}</div>
+							</div>
+
 							<div className='date'>{messages[0].date}</div>
 						</div>
 						<div className='message'>

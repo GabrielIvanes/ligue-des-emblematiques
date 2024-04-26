@@ -6,7 +6,7 @@ function Author() {
 	return (
 		<div className='author-wrapper'>
 			<div className='portrait-wrapper'>
-				<h1>Gérard Millot</h1>
+				<h1>G é r a r d&nbsp;&nbsp;&nbsp;M i l l o t</h1>
 				<div className='portrait'></div>
 			</div>
 
