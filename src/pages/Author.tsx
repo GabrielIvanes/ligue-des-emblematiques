@@ -12,7 +12,7 @@ function Author() {
 
 			<div className='informations'>
 				<div className='top'>
-					<div className='actuality'>Séance de dédicace: J-3 !</div>
+					<div className='actuality'>J-3 séance de dédicace</div>
 					<div className='biography'>
 						<h2>Biographie</h2>
 						<div>
