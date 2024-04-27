@@ -109,19 +109,6 @@ function Tchat() {
 		scrollToBottom();
 	}, [messages]);
 
-	function getTime() {
-		const currentDate = new Date();
-		const day = String(currentDate.getDate()).padStart(2, '0');
-		const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-		const year = currentDate.getFullYear();
-		const hours = String(currentDate.getHours()).padStart(2, '0');
-		const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-
-		const formattedDateTime = `27/04/2024 03:${minutes}`;
-
-		return formattedDateTime;
-	}
-
 	function addDivMessage(message: Message) {
 		const tchat = document.querySelector('.tchat');
 		const divMessageWrapper = document.createElement('div');
