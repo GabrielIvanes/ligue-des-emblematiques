@@ -28,9 +28,9 @@ function Header() {
 		if (event.key === 'n') {
 			event.preventDefault();
 			setShowNotification(true);
-			const myAudio = document.createElement('audio');
-			myAudio.src = `${notification}`;
-			myAudio.play();
+			// const myAudio = document.createElement('audio');
+			// myAudio.src = `${notification}`;
+			// myAudio.play();
 		}
 	}
 

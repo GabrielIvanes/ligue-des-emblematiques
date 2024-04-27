@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 
+import dots from '../assets/images/dots.svg';
 import send from '../assets/images/send.png';
 
 interface Message {
@@ -69,6 +70,7 @@ function Tchat() {
 	const [inputValue, setInputValue] = useState<string>('');
 
 	const [messageIndex, setMessageIndex] = useState(1);
+	const [messageAccepted, setMessageAccepted] = useState<boolean>(false);
 
 	const tchatRef = useRef<HTMLDivElement>(null);
 	const inputRef = useRef<HTMLInputElement | null>(null);
@@ -78,6 +80,35 @@ function Tchat() {
 			inputRef.current.focus();
 		}
 	}, []);
+
+	useEffect(() => {
+		const tchat = document.querySelector('.tchat');
+		const divPetitsPoints = document.querySelector('.petitsPoints');
+		if (divPetitsPoints && tchat) {
+			tchat.removeChild(divPetitsPoints);
+		}
+		if (
+			messages[messageIndex] &&
+			messages[messageIndex].author === 'SuperDestroyer78' &&
+			tchat &&
+			!divPetitsPoints
+		) {
+			const div = document.createElement('div');
+			const img = document.createElement('img');
+			img.src = dots;
+			img.alt = 'dots';
+			div.classList.add('petitsPoints');
+
+			div.appendChild(img);
+
+			setTimeout(() => {
+				requestAnimationFrame(() => {
+					div.classList.add('fade-in');
+				});
+				if (!document.querySelector('.petitsPoints')) tchat.appendChild(div);
+			}, 4000);
+		}
+	}, [messageIndex]);
 
 	useEffect(() => {
 		function writeText() {
@@ -90,7 +121,8 @@ function Tchat() {
 					messages[messageIndex].text &&
 					index < messages[messageIndex].text.length &&
 					input &&
-					messages[messageIndex].author !== 'SuperDestroyer78'
+					messages[messageIndex].author !== 'SuperDestroyer78' &&
+					messageAccepted
 				) {
 					input.value += messages[messageIndex].text[index];
 					index += 1;
@@ -103,7 +135,7 @@ function Tchat() {
 		const timeoutId = setTimeout(writeText, messageIndex === 1 ? 6000 : 3000);
 
 		return () => clearTimeout(timeoutId);
-	}, [messageIndex]);
+	}, [messageIndex, messageAccepted]);
 
 	useEffect(() => {
 		scrollToBottom();
@@ -146,6 +178,12 @@ function Tchat() {
 
 	function onEnterPressed(event: React.KeyboardEvent<HTMLInputElement>) {
 		if (event.key === 'm') {
+			const tchat = document.querySelector('.tchat');
+			const divPetitsPoints = document.querySelector('.petitsPoints');
+			if (divPetitsPoints && tchat) {
+				tchat.removeChild(divPetitsPoints);
+			}
+
 			setInputValue('');
 			addDivMessage(messages[messageIndex]);
 			setMessageIndex(messageIndex + 1);
@@ -160,50 +198,76 @@ function Tchat() {
 
 	return (
 		messages && (
-			<div className='tchat-wrapper'>
-				<div className='tchat' ref={tchatRef}>
-					<div className={`message-wrapper ${messages[0].author} new-message`}>
-						<div className='titre'>
-							<div className='left'>
-								<div className='face'></div>
-								<div className='person-message'>{messages[0].author}</div>
-							</div>
-
-							<div className='date'>{messages[0].date}</div>
-						</div>
-						<div className='message'>
-							<div className='response'>
-								<div>Réponse au post de Stan du 27/04/2024</div>
-								<div>
-									{'>>'} Absolument abject ! La fin de "La Ligue des
-									Emblématiques" est un affront à l'intelligence ...
+			<div className='tchat-page-wrapper'>
+				<div
+					className='tchat-wrapper'
+					style={!messageAccepted ? { filter: 'blur(10px)' } : {}}
+				>
+					<div className='tchat' ref={tchatRef}>
+						<div
+							className={`message-wrapper ${messages[0].author} new-message`}
+						>
+							<div className='titre'>
+								<div className='left'>
+									<div className='face'></div>
+									<div className='person-message'>{messages[0].author}</div>
 								</div>
+
+								<div className='date'>{messages[0].date}</div>
 							</div>
-							<div>{messages[0].text}</div>
+							<div className='message'>
+								<div className='response'>
+									<div>Réponse au post de Stan du 27/04/2024</div>
+									<div>
+										{'>>'} Absolument abject ! La fin de "La Ligue des
+										Emblématiques" est un affront à l'intelligence ...
+									</div>
+								</div>
+								<div>{messages[0].text}</div>
+							</div>
 						</div>
 					</div>
+					<div className='new-tchat'>
+						<input
+							ref={inputRef}
+							type='text'
+							placeholder='Envoyez un nouveau message ...'
+							onKeyDown={(event) => onEnterPressed(event)}
+							value={inputValue}
+							onChange={(event) =>
+								event.target.value != 'm' && setInputValue(event.target.value)
+							}
+						/>
+						<img
+							src={send}
+							alt=''
+							onClick={() => {
+								setInputValue('');
+								addDivMessage(messages[messageIndex]);
+								setMessageIndex(messageIndex + 1);
+							}}
+						/>
+					</div>
 				</div>
-				<div className='new-tchat'>
-					<input
-						ref={inputRef}
-						type='text'
-						placeholder='Envoyez un nouveau message ...'
-						onKeyDown={(event) => onEnterPressed(event)}
-						value={inputValue}
-						onChange={(event) =>
-							event.target.value != 'm' && setInputValue(event.target.value)
-						}
-					/>
-					<img
-						src={send}
-						alt=''
-						onClick={() => {
-							setInputValue('');
-							addDivMessage(messages[messageIndex]);
-							setMessageIndex(messageIndex + 1);
-						}}
-					/>
-				</div>
+				{!messageAccepted && (
+					<div className='message-accepted'>
+						<div className='text'>
+							SuperDestroyer78 veut vous envoyer un message
+						</div>
+						<div className='buttons'>
+							<button
+								className='accepted'
+								onClick={() => {
+									setMessageAccepted(true);
+									inputRef.current && inputRef.current.focus();
+								}}
+							>
+								Accepter
+							</button>
+							<button className='refused'>Refuser</button>
+						</div>
+					</div>
+				)}
 			</div>
 		)
 	);
