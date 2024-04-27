@@ -40,7 +40,7 @@ function Home() {
 	function scrollToBottom() {
 		if (textAreaValue !== '') window.scrollTo(0, document.body.scrollHeight);
 	}
-
+	//A
 	function adjustHeight() {
 		// if (textAreaRef.current) {
 		// 	console.log(textAreaRef.current.scrollHeight);
