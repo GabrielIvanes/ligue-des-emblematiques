@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useMemo } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 import send from '../assets/images/send.png';
 
@@ -23,51 +23,50 @@ function Tchat() {
 		'Comment ça ?',
 	];
 
-	const messages = useMemo(
-		() => [
-			{
-				text: messagesSuperDestroyer[0],
-				author: 'SuperDestroyer78',
-				date: getTime(),
-			},
-			{
-				text: messagesStan[0],
-				author: 'Stan',
-				date: getTime(),
-			},
-			{
-				text: messagesSuperDestroyer[1],
-				author: 'SuperDestroyer78',
-				date: getTime(),
-			},
-			{
-				text: messagesStan[1],
-				author: 'Stan',
-				date: getTime(),
-			},
-			{
-				text: messagesSuperDestroyer[2],
-				author: 'SuperDestroyer78',
-				date: getTime(),
-			},
-			{
-				text: messagesStan[2],
-				author: 'Stan',
-				date: getTime(),
-			},
-			{
-				text: messagesSuperDestroyer[3],
-				author: 'SuperDestroyer78',
-				date: getTime(),
-			},
-			{
-				text: messagesSuperDestroyer[4],
-				author: 'SuperDestroyer78',
-				date: getTime(),
-			},
-		],
-		[messagesSuperDestroyer, messagesStan]
-	);
+	const messages = [
+		{
+			text: messagesSuperDestroyer[0],
+			author: 'SuperDestroyer78',
+			date: getTime(),
+		},
+		{
+			text: messagesStan[0],
+			author: 'Stan',
+			date: getTime(),
+		},
+		{
+			text: messagesSuperDestroyer[1],
+			author: 'SuperDestroyer78',
+			date: getTime(),
+		},
+		{
+			text: messagesStan[1],
+			author: 'Stan',
+			date: getTime(),
+		},
+		{
+			text: messagesSuperDestroyer[2],
+			author: 'SuperDestroyer78',
+			date: getTime(),
+		},
+		{
+			text: messagesStan[2],
+			author: 'Stan',
+			date: getTime(),
+		},
+		{
+			text: messagesSuperDestroyer[3],
+			author: 'SuperDestroyer78',
+			date: getTime(),
+		},
+		{
+			text: messagesSuperDestroyer[4],
+			author: 'SuperDestroyer78',
+			date: getTime(),
+		},
+	];
+
+	const firstMessageDate = getTime();
 
 	const [inputValue, setInputValue] = useState<string>('');
 
@@ -148,8 +147,23 @@ function Tchat() {
 		divLeft.classList.add('left');
 		divFace.classList.add('face');
 
+		const currentDate = new Date();
+
+		// Formater la date et l'heure sans les secondes
+		const formattedDate =
+			currentDate.toLocaleDateString(undefined, {
+				day: '2-digit',
+				month: '2-digit',
+				year: 'numeric',
+			}) +
+			' ' +
+			currentDate.toLocaleTimeString(undefined, {
+				hour: '2-digit',
+				minute: '2-digit',
+			});
+
 		divPersonMessage.textContent = message.author;
-		divDate.textContent = message.date;
+		divDate.textContent = formattedDate;
 		divMessage.textContent = message.text;
 		divLeft.appendChild(divFace);
 		divLeft.appendChild(divPersonMessage);
@@ -185,7 +199,7 @@ function Tchat() {
 								<div className='person-message'>{messages[0].author}</div>
 							</div>
 
-							<div className='date'>{messages[0].date}</div>
+							<div className='date'>{firstMessageDate}</div>
 						</div>
 						<div className='message'>
 							<div className='response'>
@@ -195,7 +209,6 @@ function Tchat() {
 									Emblématiques" est un affront à l'intelligence ...
 								</div>
 							</div>
-
 							<div>{messages[0].text}</div>
 						</div>
 					</div>

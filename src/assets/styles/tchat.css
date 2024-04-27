@@ -15,6 +15,7 @@
 	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-end; /* Enlever ça s'ils veulent revenir en arrière*/
 	overflow-x: hidden;
 }
 
