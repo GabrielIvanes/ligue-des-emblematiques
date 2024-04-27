@@ -15,7 +15,7 @@
 	overflow-y: auto;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end; /* Enlever ça s'ils veulent revenir en arrière*/
+	/* justify-content: flex-end; Enlever ça s'ils veulent revenir en arrière */
 	overflow-x: hidden;
 }
 
@@ -29,7 +29,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 10px 50px;
+	padding: 3px 50px;
 }
 
 .tchat .message-wrapper .titre .left {
@@ -42,8 +42,8 @@
 .tchat .message-wrapper .titre .left .face {
 	background-position: 53% 0;
 	background-size: cover;
-	width: 25px;
-	height: 25px;
+	width: 35px;
+	height: 35px;
 	border: 1px solid black;
 	border-radius: 50%;
 }

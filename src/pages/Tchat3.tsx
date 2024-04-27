@@ -27,46 +27,44 @@ function Tchat() {
 		{
 			text: messagesSuperDestroyer[0],
 			author: 'SuperDestroyer78',
-			date: getTime(),
+			date: '27/04/2024 03:16',
 		},
 		{
 			text: messagesStan[0],
 			author: 'Stan',
-			date: getTime(),
+			date: '27/04/2024 03:16',
 		},
 		{
 			text: messagesSuperDestroyer[1],
 			author: 'SuperDestroyer78',
-			date: getTime(),
+			date: '27/04/2024 03:16',
 		},
 		{
 			text: messagesStan[1],
 			author: 'Stan',
-			date: getTime(),
+			date: '27/04/2024 03:16',
 		},
 		{
 			text: messagesSuperDestroyer[2],
 			author: 'SuperDestroyer78',
-			date: getTime(),
+			date: '27/04/2024 03:17',
 		},
 		{
 			text: messagesStan[2],
 			author: 'Stan',
-			date: getTime(),
+			date: '27/04/2024 03:17',
 		},
 		{
 			text: messagesSuperDestroyer[3],
 			author: 'SuperDestroyer78',
-			date: getTime(),
+			date: '27/04/2024 03:17',
 		},
 		{
 			text: messagesSuperDestroyer[4],
 			author: 'SuperDestroyer78',
-			date: getTime(),
+			date: '27/04/2024 03:18',
 		},
 	];
-
-	const firstMessageDate = getTime();
 
 	const [inputValue, setInputValue] = useState<string>('');
 
@@ -119,7 +117,7 @@ function Tchat() {
 		const hours = String(currentDate.getHours()).padStart(2, '0');
 		const minutes = String(currentDate.getMinutes()).padStart(2, '0');
 
-		const formattedDateTime = `${day}/${month}/${year} 	${hours}:${minutes}`;
+		const formattedDateTime = `27/04/2024 03:${minutes}`;
 
 		return formattedDateTime;
 	}
@@ -147,23 +145,8 @@ function Tchat() {
 		divLeft.classList.add('left');
 		divFace.classList.add('face');
 
-		const currentDate = new Date();
-
-		// Formater la date et l'heure sans les secondes
-		const formattedDate =
-			currentDate.toLocaleDateString(undefined, {
-				day: '2-digit',
-				month: '2-digit',
-				year: 'numeric',
-			}) +
-			' ' +
-			currentDate.toLocaleTimeString(undefined, {
-				hour: '2-digit',
-				minute: '2-digit',
-			});
-
 		divPersonMessage.textContent = message.author;
-		divDate.textContent = formattedDate;
+		divDate.textContent = message.date;
 		divMessage.textContent = message.text;
 		divLeft.appendChild(divFace);
 		divLeft.appendChild(divPersonMessage);
@@ -199,7 +182,7 @@ function Tchat() {
 								<div className='person-message'>{messages[0].author}</div>
 							</div>
 
-							<div className='date'>{firstMessageDate}</div>
+							<div className='date'>{messages[0].date}</div>
 						</div>
 						<div className='message'>
 							<div className='response'>
