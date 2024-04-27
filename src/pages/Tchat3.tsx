@@ -173,7 +173,7 @@ function Tchat() {
 						</div>
 						<div className='message'>
 							<div className='response'>
-								<div>Réponse au commentaire de Stan du 27/04/2024</div>
+								<div>Réponse au post de Stan du 27/04/2024</div>
 								<div>
 									{'>>'} Absolument abject ! La fin de "La Ligue des
 									Emblématiques" est un affront à l'intelligence ...
